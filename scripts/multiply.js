@@ -1,50 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+const option1 = document.getElementById("option1");
+const option2 = document.getElementById("option2");
+const option3 = document.getElementById("option3");
+const audio = document.getElementById("myAudio");
+var answer = 0;
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz</title>
-    <link rel="stylesheet" href="style.css">
-    <title>multiply</title>
-</head>
+function generate_equation() {
+    var num1 = Math.floor(Math.random() * 13);
+    var num2 = Math.floor(Math.random() * 13);
+    var dummyAnswer1 = Math.floor(Math.random() * 50);
+    var dummyAnswer2 = Math.floor(Math.random() * 50);
+    var allAnswers = [];
+    var switchAnswers = [];
 
-<body>
-    <audio>
-        <source src="root/audio/wrong.mp3">
-        </audio>
-    <div class="container">
-        <h1>MATH 4 KIDS</h1>
-        <ul>
-            <li><a href="index.html">Add</a></li>
-            <li><a href="subtract.html">Subtract</a></li>
-            <li class="current"><a href="multiply.html">Multiply</a></li>
-            <li><a href="divide.html">Divide</a></li>
-        </ul>
-        </nav>
-    </div>
-    </div>
-    </header>
+    answer = num1 * num2;
 
-    <div class="wrapper">
-        <div class="equation">
-            <h1 id="num1" style="color:#FE4A49;"></h1>
-            <h1 style="color: #2AB7CA;">*</h1>
-            <h1 id="num2" style="color: #fed766;">1</h1>
-            <h1 style="color: #F86624;">=</h1>
-            <h1 style="color: gray;">?</h1>
-        </div>
-        <div class="answer-options">
-            <h1 id="option1">1</h1>
-            <h1 id="option2">2</h1>
-            <h1 id="option3">3</h1>
-        </div>
-    </div>
+    document.getElementById("num1").innerHTML = num1;
+    document.getElementById("num2").innerHTML = num2;
 
-    <script src="multiply.js"></script>
+    allAnswers = [answer, dummyAnswer1, dummyAnswer2];
 
-</body>
+    for (i = allAnswers.length; 1--;) {
+        switchAnswers.push(allAnswers.splice(Math.floor() * (i + 1)), 1)([0]);
+    }
+    option1.innerHTML = switchAnswers[0];
+    option2.innerHTML = switchAnswers[1];
+    option3.innerHTML = switchAnswers[2];
+}
 
-</html>
+option1.addEventListener("click", function() {
+    if (option1.innerHTML == answer) {
+        generate_equation();
+    } else {
+        audio.play();
+    }
+});
 
+option2.addEventListener("click", function() {
+    if (option2.innerHTML == answer) {
+        generate_equation();
+    } else {
+        audio.play();
+    }
+});
+
+option3.addEventListener("click", function() {
+    if (option3.innerHTML == answer) {
+        generate_equation();
+    } else {
+        audio.play();
+    }
+});
+
+generate_equation();
